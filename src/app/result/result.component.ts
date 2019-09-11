@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { request } from "tns-core-modules/http";
+import { RouterExtensions } from "nativescript-angular/router";
 
 @Component({
 	moduleId: module.id,
@@ -17,7 +18,7 @@ export class ResultComponent implements OnInit {
 	isBusy:boolean=false;
 	kode_produksi:string;
 
-	constructor(private route: ActivatedRoute) { 
+	constructor(private route: ActivatedRoute,private routerExtensions: RouterExtensions) { 
 		const id = +this.route.snapshot.params['id'];
 		this.kode=id.toString();
 		this.getdata();
@@ -37,7 +38,17 @@ export class ResultComponent implements OnInit {
             })
         }).then((response) => {
             const result = response.content.toJSON();
-            this.data=result.data;
+            if(result.data==""){
+                alert("Produk yang anda cari tidak ada.");
+                this.routerExtensions.navigate(['/scan'], {
+                    transition: {
+                        name: "fade"
+                    },
+                    clearHistory: true
+                });
+            }else{
+                this.data=result.data;
+            }
 			this.isBusy=false;
         }, (e) => {
         });

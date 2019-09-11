@@ -1,0 +1,77 @@
+<ActionBar class="action-bar" title="Result">
+</ActionBar>
+<ScrollView>
+    <StackLayout>
+        <DockLayout class="content">
+            <Button dock="right" width="25%" text="&#xf002;" class="fa btn btn-info" (tap)="getdataproduksi()"></Button>
+            <TextField dock="left" width="75%" text="{{kode_produksi}}" hint="Masukan kode produksi.."></TextField>
+        </DockLayout>
+        <StackLayout *ngFor="let item of data" visibility="{{ !isBusy ? 'visible' : 'collapsed' }}">
+            <StackLayout>
+                <Label class="h3 center" text=""></Label>
+                <Image src="{{item.gambar}}" stretch="aspectFill" width="150" height="150"></Image>
+                <StackLayout class="hr"></StackLayout>
+            </StackLayout>
+            <StackLayout>
+                <DockLayout class="biodata h4">
+                    <Label dock="left" width="35%" text="Kode"></Label>
+                    <Label dock="left" width="10%" text=":"></Label>
+                    <Label dock="left" width="55%" text="{{item.kode}}" textWrap="true"></Label>
+                </DockLayout>
+                <DockLayout class="biodata h4">
+                    <Label dock="left" width="35%" text="Nama"></Label>
+                    <Label dock="left" width="10%" text=":"></Label>
+                    <Label dock="left" width="55%" text="{{item.nama}}" textWrap="true"></Label>
+                </DockLayout>
+                <DockLayout class="biodata h4">
+                    <Label dock="left" width="35%" text="Komposisi"></Label>
+                    <Label dock="left" width="10%" text=":"></Label>
+                    <Label dock="left" width="55%" text="{{item.komposisi}}" textWrap="true"></Label>
+                </DockLayout>
+                <DockLayout class="biodata h4">
+                    <Label dock="left" width="35%" text="Takaran Per Kemasan" textWrap="true"></Label>
+                    <Label dock="left" width="10%" text=":"></Label>
+                    <Label dock="left" width="55%" text="{{item.tpk}}"></Label>
+                </DockLayout>
+                <DockLayout class="biodata h4">
+                    <Label dock="left" width="35%" text="Takaran Per Service" textWrap="true"></Label>
+                    <Label dock="left" width="10%" text=":"></Label>
+                    <Label dock="left" width="55%" text="{{item.tps}}" textWrap="true"></Label>
+                </DockLayout>
+                <DockLayout class="biodata h4">
+                    <Label dock="left" width="35%" text="Takaran Saji"></Label>
+                    <Label dock="left" width="10%" text=":"></Label>
+                    <Label dock="left" width="55%" text="{{item.tsaji}}" textWrap="true"></Label>
+                </DockLayout>
+                <DockLayout class="biodata h4">
+                    <Label dock="left" width="35%" text="Detail Lain"></Label>
+                    <Label dock="left" width="10%" text=":"></Label>
+                    <Label dock="left" width="55%" text="{{item.detail}}" textWrap="true"></Label>
+                </DockLayout>
+            </StackLayout>
+        </StackLayout>
+        <StackLayout *ngFor="let item of data1">
+            <DockLayout class="biodata h4">
+                <Label dock="left" width="35%" text="Kode Produksi"></Label>
+                <Label dock="left" width="10%" text=":"></Label>
+                <Label dock="left" width="55%" text="{{item.kode_produksi}}" textWrap="true"></Label>
+            </DockLayout>
+            <DockLayout class="biodata h4">
+                <Label dock="left" width="35%" text="TGL Produksi"></Label>
+                <Label dock="left" width="10%" text=":"></Label>
+                <Label dock="left" width="55%" text="{{item.tgl_produksi}}" textWrap="true"></Label>
+            </DockLayout>
+            <DockLayout class="biodata h4">
+                <Label dock="left" width="35%" text="TGL EXP"></Label>
+                <Label dock="left" width="10%" text=":"></Label>
+                <Label dock="left" width="55%" text="{{item.tgl_exp}}" textWrap="true"></Label>
+            </DockLayout>
+        </StackLayout>
+    </StackLayout>
+</ScrollView>
+
+<!-- Loading -->
+<DockLayout style="vertical-align: middle;" visibility="{{ isBusy ? 'visible' : 'collapsed' }}">
+    <ActivityIndicator row="1" #activityIndicator busy="true" width="100" height="100" class="activity-indicator">
+    </ActivityIndicator>
+</DockLayout>

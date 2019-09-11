@@ -6,6 +6,23 @@
             <Button dock="right" width="25%" text="&#xf002;" class="fa btn btn-info" (tap)="getdataproduksi()"></Button>
             <TextField dock="left" width="75%" text="{{kode_produksi}}" hint="Masukan kode produksi.."></TextField>
         </DockLayout>
+        <StackLayout *ngFor="let item of data1">
+            <DockLayout class="biodata h4">
+                <Label dock="left" width="35%" text="Kode Produksi"></Label>
+                <Label dock="left" width="10%" text=":"></Label>
+                <Label dock="left" width="55%" text="{{item.kode_produksi}}" textWrap="true"></Label>
+            </DockLayout>
+            <DockLayout class="biodata h4">
+                <Label dock="left" width="35%" text="TGL Produksi"></Label>
+                <Label dock="left" width="10%" text=":"></Label>
+                <Label dock="left" width="55%" text="{{item.tgl_produksi}}" textWrap="true"></Label>
+            </DockLayout>
+            <DockLayout class="biodata h4">
+                <Label dock="left" width="35%" text="TGL EXP"></Label>
+                <Label dock="left" width="10%" text=":"></Label>
+                <Label dock="left" width="55%" text="{{item.tgl_exp}}" textWrap="true"></Label>
+            </DockLayout>
+        </StackLayout>
         <StackLayout *ngFor="let item of data" visibility="{{ !isBusy ? 'visible' : 'collapsed' }}">
             <StackLayout>
                 <Label class="h3 center" text=""></Label>
@@ -49,23 +66,6 @@
                     <Label dock="left" width="55%" text="{{item.detail}}" textWrap="true"></Label>
                 </DockLayout>
             </StackLayout>
-        </StackLayout>
-        <StackLayout *ngFor="let item of data1">
-            <DockLayout class="biodata h4">
-                <Label dock="left" width="35%" text="Kode Produksi"></Label>
-                <Label dock="left" width="10%" text=":"></Label>
-                <Label dock="left" width="55%" text="{{item.kode_produksi}}" textWrap="true"></Label>
-            </DockLayout>
-            <DockLayout class="biodata h4">
-                <Label dock="left" width="35%" text="TGL Produksi"></Label>
-                <Label dock="left" width="10%" text=":"></Label>
-                <Label dock="left" width="55%" text="{{item.tgl_produksi}}" textWrap="true"></Label>
-            </DockLayout>
-            <DockLayout class="biodata h4">
-                <Label dock="left" width="35%" text="TGL EXP"></Label>
-                <Label dock="left" width="10%" text=":"></Label>
-                <Label dock="left" width="55%" text="{{item.tgl_exp}}" textWrap="true"></Label>
-            </DockLayout>
         </StackLayout>
     </StackLayout>
 </ScrollView>
